@@ -21,14 +21,16 @@ class ParticleSystem {
             angle*=(3.14/180)
 
             //Option 1 - Slow particles
-            val speed =random.nextFloat()/3
+//            val speed =random.nextFloat()/3
 
             //Option 2 - Fast particles
-//            val speed=(random.nextInt(10)+1)
+            val speed=(random.nextInt(10)+1)
 
             val direction: PointF = PointF(cos(angle).toFloat()*speed, sin(angle).toFloat()*speed)
 
-            particles.add(Particle(direction))
+
+
+            particles.add(Particle((direction),255,random.nextInt(256),random.nextInt(256),random.nextInt(256)))
         }
     }
 
@@ -63,31 +65,32 @@ class ParticleSystem {
         for (p in particles){
 
             //Option 1 - Colored particles
-//            paint.setARGB(255, random.nextInt(256),random.nextInt(256),random.nextInt(256))
+            paint.setARGB(p.alfa, p.red,p.green,p.blue)
+
 
             //Option 2 - White particles
-            paint.color=Color.argb(255,255,255,255)
+//            paint.color=Color.argb(255,255,255,255)
 
             //Option 1 - Big particles
-            val sizeX=25f
-            val sizeY=25f
+//            val sizeX=25f
+//            val sizeY=25f
 
             //Option 2 - Medium particles
 //            val sizeX=10f
 //            val sizeY=10f
 
             //Option 3 - Tiny particles
-//            val sizeX = 12f
-//            val sizeY = 12f
+            val sizeX = 12f
+            val sizeY = 12f
 
             //Draw the particles
             //Option 1 - Square particles
-            canvas.drawRect(p.position.x, p.position.y,
-            p.position.x+sizeX, p.position.y + sizeY,
-            paint)
+//            canvas.drawRect(p.position.x, p.position.y,
+//            p.position.x+sizeX, p.position.y + sizeY,
+//            paint)
 
             //Option 2 - Circle particles
-//            canvas.drawCircle(p.position.x,p.position.y,sizeX,paint)
+            canvas.drawCircle(p.position.x,p.position.y,sizeX,paint)
         }
     }
 }
